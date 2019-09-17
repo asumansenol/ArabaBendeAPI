@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="arabaDBModel3StoreContainer" CdmEntityContainer="arabaDBEntities7">
+    <EntitySetMapping Name="GmailUsers">
+      <EntityTypeMapping TypeName="arabaDBModel3.GmailUser">
+        <MappingFragment StoreEntitySet="GmailUser">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="familyName" ColumnName="familyName" />
+          <ScalarProperty Name="givenName" ColumnName="givenName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="photoUrl" ColumnName="photoUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

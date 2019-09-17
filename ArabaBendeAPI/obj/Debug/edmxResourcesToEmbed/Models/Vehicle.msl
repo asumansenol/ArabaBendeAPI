@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="arabaDBModel2StoreContainer" CdmEntityContainer="arabaDBEntities10">
+    <EntitySetMapping Name="Vehicles">
+      <EntityTypeMapping TypeName="arabaDBModel2.Vehicle">
+        <MappingFragment StoreEntitySet="Vehicles">
+          <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+          <ScalarProperty Name="Plaka" ColumnName="Plaka" />
+          <ScalarProperty Name="EnabledFlag" ColumnName="EnabledFlag" />
+          <ScalarProperty Name="ReservationFlag" ColumnName="ReservationFlag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
