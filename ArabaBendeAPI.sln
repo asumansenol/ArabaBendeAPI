@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArabaBendeAPI", "ArabaBendeAPI\ArabaBendeAPI.csproj", "{F93E151B-8729-4014-BEB2-C7AF941A666A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F93E151B-8729-4014-BEB2-C7AF941A666A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F93E151B-8729-4014-BEB2-C7AF941A666A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F93E151B-8729-4014-BEB2-C7AF941A666A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F93E151B-8729-4014-BEB2-C7AF941A666A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6BB3F66C-F82C-4C09-849B-F2C331DA2D6E}
+	EndGlobalSection
+EndGlobal
