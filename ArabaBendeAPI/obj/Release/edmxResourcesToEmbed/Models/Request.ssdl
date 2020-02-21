@@ -9,6 +9,7 @@
     <Property Name="DurationCheck" Type="int" />
     <Property Name="VehicleID" Type="int" Nullable="false" />
     <Property Name="CreationDate" Type="datetime" />
+    <Property Name="RequestType" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="arabaDBModel1StoreContainer">
     <EntitySet Name="Requests" EntityType="Self.Requests" Schema="dbo" store:Type="Tables" />

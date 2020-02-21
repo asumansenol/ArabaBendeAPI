@@ -13,5 +13,6 @@ namespace ArabaBendeAPI.Models
         public Nullable<int> DurationCheck { get; set; }
         public string PhotoUrl { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
+        public string CreationDateStr { get; set; }
     }
 }

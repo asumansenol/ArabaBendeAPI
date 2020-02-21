@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Analytics.NET, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Analytics.3.0.0\lib\Analytics.NET.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -313,7 +316,7 @@
       <DependentUpon>Request.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Request.cs">
-      <DependentUpon>AllTables.tt</DependentUpon>
+      <DependentUpon>Request.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Request.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -483,6 +486,7 @@
       <DependentUpon>Employee.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\ArabaBendeAPI20190415025913 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\ArabaBendeAPI20200130050008 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

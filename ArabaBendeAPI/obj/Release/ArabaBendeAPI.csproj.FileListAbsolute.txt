@@ -144,3 +144,4 @@ C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\Microsoft.Ext
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\Microsoft.Extensions.Primitives.xml
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\Microsoft.Net.Http.Headers.xml
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\System.Text.Encodings.Web.xml
+C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\Analytics.NET.dll

@@ -47,6 +47,7 @@ C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\roslyn\vbc.ex
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\roslyn\vbc.rsp
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\roslyn\VBCSCompiler.exe
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\Analytics.NET.dll
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\Antlr3.Runtime.dll
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\EntityFramework.dll
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\EntityFramework.SqlServer.dll
@@ -139,8 +140,8 @@ C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\Antlr3.Runtim
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\obj\Debug\ArabaBendeAPI.csprojAssemblyReference.cache
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\obj\Debug\ArabaBendeAPI.csproj.CoreCompileInputs.cache
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\obj\Debug\ArabaBendeAPI.csproj.CopyComplete
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\obj\Debug\ArabaBendeAPI.dll
 C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\obj\Debug\ArabaBendeAPI.pdb
-C:\Users\asuman.senol\source\repos\ArabaBendeAPI\ArabaBendeAPI\obj\Debug\ArabaBendeAPI.csprojAssemblyReference.cache

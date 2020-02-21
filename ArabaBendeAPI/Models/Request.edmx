@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="arabaDBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="arabaDBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Requests">
           <Key>
             <PropertyRef Name="RequestID" />
@@ -14,12 +14,12 @@
           <Property Name="DurationCheck" Type="int" />
           <Property Name="VehicleID" Type="int" Nullable="false" />
           <Property Name="CreationDate" Type="datetime" />
+          <Property Name="RequestType" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="arabaDBModel1StoreContainer">
           <EntitySet Name="Requests" EntityType="Self.Requests" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="arabaDBModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -32,6 +32,7 @@
           <Property Name="DurationCheck" Type="Int32" />
           <Property Name="VehicleID" Type="Int32" Nullable="false" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="RequestType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="arabaDBEntities11" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Requests" EntityType="Self.Request" />
@@ -45,6 +46,7 @@
           <EntitySetMapping Name="Requests">
             <EntityTypeMapping TypeName="arabaDBModel1.Request">
               <MappingFragment StoreEntitySet="Requests">
+                <ScalarProperty Name="RequestType" ColumnName="RequestType" />
                 <ScalarProperty Name="RequestID" ColumnName="RequestID" />
                 <ScalarProperty Name="PersonID" ColumnName="PersonID" />
                 <ScalarProperty Name="DurationCheck" ColumnName="DurationCheck" />

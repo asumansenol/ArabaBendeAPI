@@ -9,6 +9,7 @@
     <Property Name="DurationCheck" Type="Int32" />
     <Property Name="VehicleID" Type="Int32" Nullable="false" />
     <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="RequestType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityContainer Name="arabaDBEntities11" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Requests" EntityType="Self.Request" />

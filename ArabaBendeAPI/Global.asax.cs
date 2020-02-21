@@ -18,6 +18,7 @@ namespace ArabaBendeAPI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Segment.Analytics.Initialize("JtphtAsQap3M7MRBh2aHS6h44lDZ2kO9");
         }
     }
 }

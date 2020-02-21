@@ -19,5 +19,6 @@ namespace ArabaBendeAPI.Models
         public Nullable<int> DurationCheck { get; set; }
         public int VehicleID { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
+        public string RequestType { get; set; }
     }
 }

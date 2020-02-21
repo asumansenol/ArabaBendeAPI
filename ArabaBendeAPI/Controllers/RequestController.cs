@@ -33,7 +33,7 @@ namespace ArabaBendeAPI.Controllers
 	                                    TerritorySummary.TelephoneNumber,
 	                                    TerritorySummary.Plaka,
 	                                    TerritorySummary.DurationCheck,
-	                                    TerritorySummary.CreationDate
+	                                TerritorySummary.CreationDate
                                 from 
                                 (select per.FirstName + ' ' + per.LastName isim ,
 	                                per.TelephoneNumber,
@@ -55,7 +55,18 @@ namespace ArabaBendeAPI.Controllers
             {
                 request = context.Database.SqlQuery<SelectRequest>(sqlString).ToList();
             }
+            foreach ( SelectRequest requ in request)
+            {
+                DateTimeOffset localTime, otherTime, universalTime;
 
+                // Define local time in local time zone
+                TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("Turkey Standard Time");
+                DateTime UpdatedTime = requ.CreationDate ?? DateTime.Now;
+                DateTime cstTime = TimeZoneInfo.ConvertTimeFromUtc(UpdatedTime, cstZone);
+
+
+                requ.CreationDateStr = cstTime.ToString().Split(' ')[1].Split(':')[0] +":"+ cstTime.ToString().Split(' ')[1].Split(':')[1];
+            }
             sourceList.Add(request);
             var reservations = (from ep in emp
                                join e in res on ep.PersonID equals e.PersonID
@@ -63,6 +74,7 @@ namespace ArabaBendeAPI.Controllers
                                where e.BeginDate >= TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Turkey Standard Time")
                                || (e.BeginDate < TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Turkey Standard Time") 
                                && TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Turkey Standard Time") < e.EndDate)
+                               orderby e.BeginDate ascending
                                 select new
                                {
                                    Name = ep.FirstName + " " + ep.LastName,
@@ -71,8 +83,10 @@ namespace ArabaBendeAPI.Controllers
                                    Plaka = t.Plaka,
                                    TelephoneNumber = ep.TelephoneNumber,
                                    EndDate = e.EndDate.ToString(),
-                                   Aim = e.Aim
-                               }).ToList();
+                                   Aim = e.Aim,
+                                   ReservationId=e.ReservationID,
+                                   PersonId = e.PersonID
+                                }).ToList();
 
             sourceList.Add(reservations);
             return Json(sourceList);
@@ -97,6 +111,36 @@ namespace ArabaBendeAPI.Controllers
                               }).ToList();
 
             return Json(entryPoint);
+        }
+
+        [HttpGet]
+        [Route("api/GetRequestsAccToVehId")]
+        public IHttpActionResult GetRequestsAccToVehId(int VehId)
+        {
+            var req = new List<Request>(dbReq.Requests);
+            var emp = new List<Person>(dbEmp.Persons);
+            var veh = new List<Vehicle>(dbVeh.Vehicles);
+
+            var top1Req = (from r in req
+                           join e in emp on r.PersonID equals e.PersonID
+                           join t in veh on r.VehicleID equals t.VehicleID
+                           where r.VehicleID == VehId
+                              select new {  DurationCheck = r.DurationCheck,
+                                            Name = e.FirstName +" "+ e.LastName,
+                                            CreationDate = getTurkishTime(r.CreationDate),
+                                            Plaka=t.Plaka
+                              }).LastOrDefault();
+
+            return Json(top1Req);
+        }
+
+        private string getTurkishTime(DateTime? creationDate)
+        {
+            TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("Turkey Standard Time");
+            DateTime UpdatedTime = creationDate ?? DateTime.Now;
+            DateTime cstTime = TimeZoneInfo.ConvertTimeFromUtc(UpdatedTime, cstZone);
+
+            return cstTime.ToString().Split(' ')[1].Split(':')[0] + ":" + cstTime.ToString().Split(' ')[1].Split(':')[1];
         }
 
         // PUT: api/Employees/5  
@@ -125,33 +169,52 @@ namespace ArabaBendeAPI.Controllers
 
         // POST: api/Employees  
 
-        public IQueryable<Vehicle> PostRequest(RequestWithoutDate request)
+        public IHttpActionResult PostRequest(RequestWithoutDate request)
         {
-            Request req = new Request
+            Tuple<bool, string, IQueryable<Vehicle>> tuple;
+            string msg = "";
+            try
             {
-                RequestID = request.RequestID,
-                PersonID = request.PersonID,
-                VehicleID = request.VehicleID,
-                CreationDate = DateTime.Now,
-                DurationCheck = request.DurationCheck
-            };
-            dbReq.Requests.Add(req);
-            dbReq.SaveChanges();
-            Vehicle result = dbVeh.Vehicles.SingleOrDefault(b => b.VehicleID == req.VehicleID);
-            if (result != null && result.EnabledFlag == 0)
-            {
-                result.EnabledFlag = 1;
-                dbVeh.SaveChanges();
+           
+                Vehicle result = dbVeh.Vehicles.SingleOrDefault(b => b.VehicleID == request.VehicleID);
+                if (result != null && result.EnabledFlag == 0)
+                {
+                    result.EnabledFlag = 1;
+                    dbVeh.SaveChanges();
+                    msg = "Araba bırakılmıştır.";
+                }
+                else if (result != null && result.EnabledFlag == 1)
+                {
+                    result.EnabledFlag = 0;
+                    dbVeh.SaveChanges();
+                    msg = "Araba alınmıştır.";
+                }
+                Request req = new Request
+                {
+                    RequestID = request.RequestID,
+                    PersonID = request.PersonID,
+                    VehicleID = request.VehicleID,
+                    CreationDate = DateTime.Now,
+                    DurationCheck = request.DurationCheck,
+                    RequestType = msg
+                };
+                dbReq.Requests.Add(req);
+                dbReq.SaveChanges();
+
+                VehicleController a = new VehicleController();
+                tuple = new Tuple<bool, string, IQueryable<Vehicle>>(true, msg, a.GetVehicles());
             }
-            else if (result != null && result.EnabledFlag == 1)
+            catch
             {
-                result.EnabledFlag = 0;
-                dbVeh.SaveChanges();
+                VehicleController a = new VehicleController();
+                tuple = new Tuple<bool, string, IQueryable<Vehicle>>(false, "Bir hata meydaba gelmiştir, lütfen Uygulama Geliştirm Birimi ile iletişime geçiniz.", a.GetVehicles());
             }
-            VehicleController a = new VehicleController();
-            a.GetVehicles();
-            return a.GetVehicles();
+            
+                return Json(tuple);
         }
+
+
+
 
         // DELETE: api/Employees/5  
 

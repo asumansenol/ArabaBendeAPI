@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Requests">
       <EntityTypeMapping TypeName="arabaDBModel1.Request">
         <MappingFragment StoreEntitySet="Requests">
+          <ScalarProperty Name="RequestType" ColumnName="RequestType" />
           <ScalarProperty Name="RequestID" ColumnName="RequestID" />
           <ScalarProperty Name="PersonID" ColumnName="PersonID" />
           <ScalarProperty Name="DurationCheck" ColumnName="DurationCheck" />
