@@ -1,14 +1,13 @@
 # ASP.NET
+trigger:
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'SonarCloud'
     organization: 'asumansenol'
     scannerMode: 'MSBuild'
-    projectKey: 'asumansenol_ArabaBendeAPI'
-# Build and test ASP.NET projects.
-# Add steps that publish symbols, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
-trigger:
+    projectKey: 'asumansenol.ArabaBendeAPI'
+    projectName: 'ArabaBendeAPI'
+    
 - master
 
 pool:
